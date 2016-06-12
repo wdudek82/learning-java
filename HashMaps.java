@@ -10,6 +10,11 @@ public class HashMaps {
         someAnimals.put("Manju", 4);
         someAnimals.put("Red", 10);
 
+        // This returns null
+        System.out.println(someAnimals.get(0));
+
+        System.out.println("Size of someAnimals HashMap: " + someAnimals.size());
+
         for (String animal: someAnimals.keySet()) {
             System.out.println(animal + " " + someAnimals.get(animal));
             if (someAnimals.get(animal) > 6) {
@@ -20,6 +25,7 @@ public class HashMaps {
         }
 
         System.out.println(someAnimals.keySet());
+        System.out.println(someAnimals);
 
 
     }

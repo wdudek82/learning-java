@@ -1,0 +1,3 @@
+Just as Python provides the dictionary when we want to have easy access to key, value pairs, Java also provides us a similar mechanism. Rather than the dictionary terminology, Java calls these objects Maps. Java provides two different implementations of a map, one is called the TreeMap and the other is called a HashMap. As you might guess the TreeMap uses a balanced binary tree behind the scenes, and the HashMap uses a hash table.
+
+Lets stay with a simple frequency counting example, only this time we will count the frequency of words in a document. A simple Python program for this job could look like this:
