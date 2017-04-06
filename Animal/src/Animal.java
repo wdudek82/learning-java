@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+//import java.util.Arrays;
 import java.util.Scanner;
 import java.util.*;
 
@@ -217,6 +219,20 @@ public class Animal {
 
     }
 
+    // Polymorphism example
+    public String makeSound(){
+
+        return "Grrrr";
+
+    }
+
+    public static void speakAnimal(Animal randAnimal){
+
+        System.out.println("Animal says " + randAnimal.makeSound());
+
+    }
+
+
     public static void main(String[] args) {
 
         Animal theAnimal = new Animal();
@@ -231,6 +247,49 @@ public class Animal {
 
         String str = printNumbers(1000);
         System.out.println(str);
+
+        int[] favoriteNumber;
+        favoriteNumber = new int[20];
+        favoriteNumber[0] = 100;
+
+        String[] stringArray = {"Random", "Words", "Here"};
+
+        for(String word : stringArray){
+
+            System.out.println(word);
+
+        }
+
+        // multidimentional array
+        String[][][] arrayName = {
+                { {"000"}, {"100"}, {"200"} },
+                { {"300"}, {"400"}, {"500"} },
+                { {"600"}, {"700"}, {"800"} }
+        };
+
+        for(int y = 0; y < arrayName.length; y++){
+
+            for(int x = 0; x < arrayName[y].length; x++){
+
+                // System.out.println(Arrays.toString(arrayName[y][x]));
+
+                for(int z = 0; z < arrayName[y][x].length; z++){
+
+                    System.out.println("| " + arrayName[y][x][z]);
+
+                }
+
+            }
+
+        }
+
+        // cloning array
+        String[] cloneOfArray = Arrays.copyOf(stringArray, 3);
+
+        System.out.println(Arrays.toString(cloneOfArray));
+
+        System.out.println(Arrays.binarySearch(cloneOfArray, "Words"));
+        System.out.println(Arrays.binarySearch(cloneOfArray, "Foo"));
 
     }
 
