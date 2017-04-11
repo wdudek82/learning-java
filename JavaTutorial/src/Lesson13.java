@@ -2,7 +2,7 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 
-public class Leasson13 {
+public class Lesson13 {
     public static void main(String[] args) {
         String randomString = "I'm just a random string.";
         String uppercaseStr = "BIG";
