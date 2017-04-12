@@ -30,7 +30,51 @@ public class Lesson20 extends JFrame {
         this.setTitle("Foo Bar Baz");
         this.setIconImage(icon.getImage());
 
+        // Setting the panel
+        JPanel thePanel = new JPanel();
+        JLabel label1 = new JLabel("Tell me something");
+        label1.setToolTipText("Example Tooltip");
+        thePanel.add(label1);
+
+        JLabel label2 = new JLabel("Tell me something new");
+        label2.setText("New Text");
+        thePanel.add(label2);
+
+        // Button
+        JButton button1 = new JButton("Send");
+//        button1.setBorderPainted(false);
+        button1.setContentAreaFilled(false);
+        thePanel.add(button1);
+
+        JButton button2 = new JButton("button2");
+        button2.setContentAreaFilled(false);
+        button2.setText("Cancel");
+        button2.setToolTipText("My second button");
+        thePanel.add(button2);
+
+        // Textfield
+        JTextField textField1 = new JTextField("phone number", 15);
+        textField1.setToolTipText("Type something here");
+        textField1.setColumns(30);
+        thePanel.add(textField1);
+
+        JTextArea textArea1 = new JTextArea("message\n\n", 19, 30);
+        textArea1.setLineWrap(true);
+        textArea1.setWrapStyleWord(true);
+        textArea1.setToolTipText("Some tooltip for text area 1");
+        int numOfLines = textArea1.getLineCount();
+        textArea1.append("\nnumber of lines: " + numOfLines);
+        thePanel.add(textArea1);
+
+        // Scrollbar for textArea1
+        JScrollPane scrollbar1 = new JScrollPane(textArea1, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        thePanel.add(scrollbar1);
+
+        this.add(thePanel);
+
         this.setVisible(true);
+
+        textField1.requestFocus();
     }
 
 }
