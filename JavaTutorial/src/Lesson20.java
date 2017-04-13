@@ -6,7 +6,6 @@ import java.net.URL;
 public class Lesson20 extends JFrame {
     public static void main(String[] args) {
         new Lesson20();
-
     }
 
     public Lesson20() {
@@ -67,7 +66,11 @@ public class Lesson20 extends JFrame {
         thePanel.add(textArea1);
 
         // Scrollbar for textArea1
-        JScrollPane scrollbar1 = new JScrollPane(textArea1, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane scrollbar1 = new JScrollPane(
+                textArea1,
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED
+        );
         thePanel.add(scrollbar1);
 
         this.add(thePanel);
