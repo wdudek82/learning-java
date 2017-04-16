@@ -1,5 +1,6 @@
 import java.awt.event.*;
 import java.text.NumberFormat;
+import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.ChangeEvent;
@@ -8,14 +9,14 @@ import javax.swing.event.ChangeListener;
 
 public class Lesson22 extends JFrame {
 
-    JButton button1;
-    JLabel label1, label2, label3;
-    JTextField textField1, textField2;
-    JCheckBox dollarSign, commaSeparator;
-    JRadioButton addNums, subtractNums, multNums, divideNums;
-    JSlider howManyTimes;
+    private JButton button1;
+    private JLabel label1, label2, label3;
+    private JTextField textField1, textField2;
+    private JCheckBox dollarSign, commaSeparator;
+    private JRadioButton addNums, subtractNums, multNums, divideNums;
+    private JSlider howManyTimes;
 
-    double number1, number2, totalCalc;
+    private double number1, number2, totalCalc;
 
     public static void main(String[] args) {
         new Lesson22();
@@ -23,7 +24,7 @@ public class Lesson22 extends JFrame {
 
     public Lesson22() {
         // setup frame
-        this.setSize(400, 400);
+        this.setSize(400, 250);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("My Third Frame");
@@ -81,7 +82,7 @@ public class Lesson22 extends JFrame {
         addNums.setSelected(true);
         thePanel.add(operationPanel);
 
-        label3 = new JLabel("Perform How Many Times");
+        label3 = new JLabel("Perform How Many Times 0");
         thePanel.add(label3);
 
         howManyTimes = new JSlider(0, 99, 1);
@@ -89,7 +90,6 @@ public class Lesson22 extends JFrame {
         howManyTimes.setMajorTickSpacing(10);
         howManyTimes.setPaintTicks(true);
         howManyTimes.setPaintLabels(true);
-//        howManyTimes.setPaintTrack(true);
         ListenForSlider lForSlider = new ListenForSlider();
         howManyTimes.addChangeListener(lForSlider);
         thePanel.add(howManyTimes);
@@ -99,11 +99,60 @@ public class Lesson22 extends JFrame {
         textField1.requestFocus();
     }
 
+//    private class ListenForButton implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if(e.getSource() == button1) {
+//                System.out.println("Val 1: " + textField1.getText() + " Val 2: " + textField2.getText() + " operation: ");
+//            }
+//        }
+//    }
+
     private class ListenForButton implements ActionListener {
+        // Experimenting with Java's Lambdas... and they are weird...
+//        MathOperation add = (int num1, int num2) -> num1 + num2;
+//        MathOperation sub = (int num1, int num2) -> num1 - num2;
+//        MathOperation mul = (int num1, int num2) -> num1 * num2;
+//        MathOperation div = (int num1, int num2) -> num1 * num2;
+
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == button1) {
-                System.out.println("Val 1: " + textField1.getText() + " Val 2: " + textField2.getText() + " operation: ");
+                try {
+                    number1 = Double.parseDouble(textField1.getText());
+                    number2 = Double.parseDouble(textField2.getText());
+                } catch(NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(
+                            Lesson22.this,
+                            "Please Enter the Right Info",
+                            "Error", JOptionPane.ERROR_MESSAGE
+                    );
+                    // System.exit(0);
+                }
+
+                if(addNums.isSelected()) {
+                    totalCalc = mathOp("add", number1, number2) * howManyTimes.getValue();
+                    System.out.printf("\n%.1f + %.1f = %.1f\n", number1, number2, totalCalc);
+                } else if(subtractNums.isSelected()) {
+                    totalCalc = mathOp("sub", number1, number2) * howManyTimes.getValue();
+                    System.out.printf("\n%.1f - %.1f = %.1f\n", number1, number2, totalCalc);
+                } else if(multNums.isSelected()) {
+                    totalCalc = mathOp("mul", number1, number2) * howManyTimes.getValue();
+                    System.out.printf("\n%.1f * %.1f = %.1f\n", number1, number2, totalCalc);
+                } else {
+                    totalCalc = mathOp("div", number1, number2) * howManyTimes.getValue();
+                    System.out.printf("\n%.1f / %.1f = %.1f\n", number1, number2, totalCalc);
+                }
+
+                if(dollarSign.isSelected()) {
+                    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.US);
+                    JOptionPane.showMessageDialog(Lesson22.this, numberFormat.format(totalCalc), "Solution", JOptionPane.INFORMATION_MESSAGE);
+                } else if(commaSeparator.isSelected()) {
+                    NumberFormat numberFormat = NumberFormat.getNumberInstance();
+                    JOptionPane.showMessageDialog(Lesson22.this, numberFormat.format(totalCalc), "Solution", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(Lesson22.this, totalCalc, "Solution", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         }
     }
@@ -111,7 +160,35 @@ public class Lesson22 extends JFrame {
     private class ListenForSlider implements ChangeListener {
         @Override
         public void stateChanged(ChangeEvent e) {
-            System.out.println("Slider value: " + howManyTimes.getValue());
+            if(e.getSource() == howManyTimes) {
+                label3.setText("Perform How Many Times? " + howManyTimes.getValue());
+            }
         }
+    }
+
+    private static double mathOp(String operation, double num1, double num2) {
+        double result = 0;
+        switch(operation) {
+            case("add"):
+                result = (num1 + num2);
+                break;
+
+            case("sub"):
+                result = (num1 - num2);
+                break;
+
+            case("mul"):
+                result = (num1 * num2);
+                break;
+
+            case("div"):
+                result = (num1 / num2);
+                break;
+        }
+        return result;
+    }
+
+    interface MathOperation {
+        int operation(int num1, int num2);
     }
 }
