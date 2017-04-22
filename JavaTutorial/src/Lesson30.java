@@ -10,6 +10,7 @@ import javax.swing.event.*;
 public class Lesson30 extends JFrame {
 
     Box sexBox, optionBox;
+    ButtonGroup sexGroup;
     JCheckBox morningCheck, afterNCheck, eveningCheck;
     JLabel nameLabel, streetLabel, stateLabel, dateLabel,
         ageLabel, sexLabel, optionsLabel, aboutLabel;
@@ -20,7 +21,6 @@ public class Lesson30 extends JFrame {
     JSpinner dateSpin;
     JSlider ageSlider;
     JRadioButton maleRadio, femaleRadio;
-    ButtonGroup sexGroup;
 
     public static void main(String[] args) {
         new Lesson30();
@@ -34,18 +34,19 @@ public class Lesson30 extends JFrame {
         JPanel thePanel = new JPanel();
         thePanel.setLayout(new GridBagLayout());
 
-        nameLabel = new JLabel("Name:");
+        nameLabel = new JLabel(" Name:");
         addComponent(thePanel, nameLabel, 0, 0, 1, 1, GridBagConstraints.EAST, GridBagConstraints.NONE);
 
         nameText = new JTextField(30);
-        addComponent(thePanel, nameText, 0, 0, 2, 1, GridBagConstraints.WEST, GridBagConstraints.NONE);
+        addComponent(thePanel, nameText, 1, 0, 2, 1, GridBagConstraints.WEST, GridBagConstraints.NONE);
 
         streetLabel = new JLabel("Street:");
-        addComponent(thePanel, streetLabel, 0, 1, 1, 1, GridBagConstraints.WEST, GridBagConstraints.NONE);
+        addComponent(thePanel, streetLabel, 0, 1, 1, 1, GridBagConstraints.EAST, GridBagConstraints.NONE);
 
-        streetText = new JTextField(10);
-        addComponent(thePanel, streetText, 0, 1, 2, 1, GridBagConstraints.WEST, GridBagConstraints.NONE);
+        streetText = new JTextField(30);
+        addComponent(thePanel, streetText, 1, 1, 2, 1, GridBagConstraints.WEST, GridBagConstraints.NONE);
 
+        // Create a set of radio buttons and wrap them in a group
         sexBox = Box.createVerticalBox();
         maleRadio = new JRadioButton("Male");
         femaleRadio = new JRadioButton("Female");
@@ -62,6 +63,8 @@ public class Lesson30 extends JFrame {
 
         stateLabel = new JLabel("State");
         statePanel.add(stateLabel);
+
+        // Create a combo box that will hold the states
         String[] states = {"PA", "NY", "OH", "WV"};
         stateList = new JComboBox(states);
         statePanel.add(stateList);
@@ -77,15 +80,17 @@ public class Lesson30 extends JFrame {
         ageLabel = new JLabel("Age: 50");
         statePanel.add(ageLabel);
 
-        ageSlider = new JSlider(1, 130, 50);
-        ageSlider.setMinorTickSpacing(1);
-        ageSlider.setMajorTickSpacing(10);
-        ageSlider.setPaintTicks(true);
-        ageSlider.setPaintLabels(true);
+        ageSlider = new JSlider(1, 99, 50);
+//        ageSlider.setMinorTickSpacing(1);
+//        ageSlider.setMajorTickSpacing(10);
+//        ageSlider.setPaintTicks(true);
+//        ageSlider.setPaintLabels(true);
         ListenForSlider lForSlider = new ListenForSlider();
         ageSlider.addChangeListener(lForSlider);
-//        statePanel.add(ageSlider);
-        addComponent(thePanel, sexBox, 1, 2, 5, 1, GridBagConstraints.EAST, GridBagConstraints.NONE);
+        statePanel.add(ageSlider);
+
+        // Add statePanel to thePanel
+        addComponent(thePanel, statePanel, 1, 2, 5, 1, GridBagConstraints.EAST, GridBagConstraints.NONE);
 
         optionBox = Box.createVerticalBox();
         morningCheck = new JCheckBox("Morning");
@@ -105,10 +110,12 @@ public class Lesson30 extends JFrame {
         scrollbar1 = new JScrollPane(aboutYou, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         addComponent(thePanel, scrollbar1, 2, 3, 3, 1, GridBagConstraints.EAST, GridBagConstraints.NONE);
 
+        addComponent(thePanel, scrollbar1, 2, 3, 3, 1, GridBagConstraints.EAST, GridBagConstraints.NONE);
+
         this.add(thePanel);
-        this.add(statePanel);
         this.pack();
         this.setVisible(true);
+        this.setResizable(false);
     } // END OF Lesson30 CONSTRUCTOR
 
     private class ListenForSlider implements ChangeListener {
@@ -116,7 +123,6 @@ public class Lesson30 extends JFrame {
         public void stateChanged(ChangeEvent e) {
             if(e.getSource() == ageSlider) {
                 ageLabel.setText("Age: " + ageSlider.getValue());
-                System.out.println("Age slider");
             }
         }
     } // END OF ListenForSlider METHOD
@@ -135,6 +141,6 @@ public class Lesson30 extends JFrame {
         gridConstraints.fill = stretch;
 
         thePanel.add(component, gridConstraints);
-    }
+    } // ENF OF addComponent METHOD
 
 } // END OF Lesson30 CLASS
