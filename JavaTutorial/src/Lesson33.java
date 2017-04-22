@@ -17,6 +17,8 @@ public class Lesson33 {
             System.out.println(e);
         }
 
+        getFileInfo("customers.dat");
+
     } // END OF main
 
     private static class Customer {
@@ -67,6 +69,38 @@ public class Lesson33 {
 
         return null;
     } // END OF createFile METHOD
+
+    private static void getFileInfo(String fileName) {
+        System.out.println("Info Written to File");
+
+        File listOfNames = new File(fileName);
+
+        boolean eof = false;
+
+        try {
+            DataInputStream getInfo = new DataInputStream(
+                    new BufferedInputStream(
+                            new FileInputStream(listOfNames)));
+            while (!eof) {
+                String custName = getInfo.readUTF();
+                int custAge = getInfo.readInt();
+                char custSex = getInfo.readChar();
+                double custDebt = getInfo.readDouble();
+                boolean custOweMoney = getInfo.readBoolean();
+
+                System.out.printf("%s %d %c %.02f %b\n", custName, custAge, custSex, custDebt, custOweMoney);
+
+            }
+        } catch(EOFException e) {
+            eof = true;
+        } catch(FileNotFoundException e) {
+            System.out.println(e);
+            System.exit(0);
+        } catch(IOException e) {
+            System.out.println(e);
+            System.exit(0);
+        }
+    } // END OF getFileInfo METHOD
 
     private static void createCustomers(Customer customer, DataOutputStream custOutput) {
         try {
