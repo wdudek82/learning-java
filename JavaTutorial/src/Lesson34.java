@@ -18,9 +18,11 @@ public class Lesson34 {
             ResultSet rows = cursor.executeQuery(queryset);
 
             while(rows.next()) {
-                System.out.println(rows.getString("firstname"));
+                System.out.print(rows.getString("firstname") + " ");
                 System.out.println(rows.getString("email"));
             }
+
+            connection.close();
 
         } catch (SQLException e) {
             System.out.println(e);
