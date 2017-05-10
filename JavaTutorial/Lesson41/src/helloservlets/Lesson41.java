@@ -28,7 +28,6 @@ public class Lesson41 extends HttpServlet {
         PrintWriter output = response.getWriter();
         output.println("<html><body><h3>Hello " + userName + "</h3>");
         output.println("<p>" + firstNum + " + " + secondNum + " = " + sumOfNums);
-        output.println("Speaks the lang: " + theLang);
-        output.println("</body></html>");
+        output.println("Speaks the lang: " + theLang + "</body></html>");
     }
 }
