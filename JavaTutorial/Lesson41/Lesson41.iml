@@ -20,5 +20,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.0.431" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="jdom2" level="application" />
   </component>
 </module>

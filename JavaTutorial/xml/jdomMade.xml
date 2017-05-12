@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tvshows>
+    <show>
+        <name show_id="show_001">Life on Mars</name>
+        <network country="US">ABC</network>
+    </show>
+    <show>
+        <name show_id="show_002">Life on Mars (UK)</name>
+        <network country="UK">BBC</network>
+    </show>
+</tvshows>
