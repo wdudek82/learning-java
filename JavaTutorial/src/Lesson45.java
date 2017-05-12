@@ -16,12 +16,10 @@ public class Lesson45 {
         try {
             builder = domFactory.newDocumentBuilder();
             doc = builder.parse("./xml/tvshows5.xml");
-        } catch(ParserConfigurationException e1) {
-            e1.printStackTrace();
-        } catch (SAXException e2) {
-            e2.printStackTrace();
-        } catch (IOException e3) {
-            e3.printStackTrace();
+        } catch (SAXException | IOException e) {
+            e.printStackTrace();
+        } catch(ParserConfigurationException e) {
+            e.printStackTrace();
         }
 
         XPath xpath = XPathFactory.newInstance().newXPath();
@@ -33,7 +31,10 @@ public class Lesson45 {
         Object result = null;
 
         try {
-            expr = xpath.compile("//show/name//text()");
+//            expr = xpath.compile("//show/name//text()");
+//            expr = xpath.compile("//show/name[@id_code='show_003']//text()");
+//            expr = xpath.compile("//show/network[@country='US']//text()");
+            expr = xpath.compile("//show/actors/actor/character[@profession='Student']//text()");
             result = expr.evaluate(doc, XPathConstants.NODESET);
         } catch(XPathExpressionException e) {
             e.printStackTrace();
