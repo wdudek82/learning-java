@@ -3,6 +3,7 @@
 out/
 .directory
 dir_31/
+*.iml
 JavaTutorial/customers.txt
 JavaTutorial/customers.dat
 JavaTutorial/static/
