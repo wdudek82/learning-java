@@ -45,8 +45,6 @@ public class CeilingLamp {
         setIsOn(false);
     }
 
-    public void useTheSwitch() {
-        setIsOn(!isOn);
-    }
+
 
 }

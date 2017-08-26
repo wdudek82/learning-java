@@ -7,10 +7,10 @@ public class MyRoom {
         Room myRoom = new Room(ceilingLamp, window);
 
         System.out.println(ceilingLamp.getColor());
-        ceilingLamp.useTheSwitch();
-        ceilingLamp.useTheSwitch();
-        ceilingLamp.useTheSwitch();
-        ceilingLamp.useTheSwitch();
+        myRoom.useTheSwitch();
+        myRoom.useTheSwitch();
+        myRoom.useTheSwitch();
+        myRoom.useTheSwitch();
         ceilingLamp.turnOff();
         ceilingLamp.turnOn();
 
