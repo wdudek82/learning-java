@@ -11,8 +11,12 @@ public class MyRoom {
         myRoom.useTheSwitch();
         myRoom.useTheSwitch();
         myRoom.useTheSwitch();
-        ceilingLamp.turnOff();
-        ceilingLamp.turnOn();
+        myRoom.turnOffTheLamp();
+        myRoom.turnOnTheLamp();
+
+        // accessing composite's attributes by getters and setters
+        System.out.print("Lamp is On: ");
+        myRoom.getCeilingLamp().getIsOn();
 
         System.out.println(window.getIsOpen());
     }

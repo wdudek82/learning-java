@@ -27,4 +27,21 @@ public class Room {
     public void useTheSwitch() {
         ceilingLamp.setIsOn(!ceilingLamp.getIsOn());
     }
+
+    public void turnOnTheLamp() {
+        if (ceilingLamp.getIsOn()) {
+            System.out.println("The Lamp was already On!");
+        } else {
+            ceilingLamp.setIsOn(true);
+        }
+    }
+
+    public void turnOffTheLamp() {
+        if (!ceilingLamp.getIsOn()) {
+            System.out.println("The Lamp was already Off!");
+        } else {
+            ceilingLamp.setIsOn(false);
+        }
+    }
+
 }

@@ -37,14 +37,4 @@ public class CeilingLamp {
         System.out.println("The lamp is now " + lampState);
     }
 
-    public void turnOn() {
-        setIsOn(true);
-    }
-
-    public void turnOff() {
-        setIsOn(false);
-    }
-
-
-
 }
