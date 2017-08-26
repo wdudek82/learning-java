@@ -2,27 +2,58 @@ public class Main {
 
     public static void main(String[] args) {
 
-        BankAccount bankAccount = new BankAccount(
-                123456, 100, "Wojtek",
-                "wojtek@argentus.pl", "123-456-789"
-        );
+        Printer printer = new Printer(300, false);
 
-        BankAccount bankAccount1 = new BankAccount();
+        printer.getPagesPrinted();
 
-        bankAccount1.status();
+        printer.getTonerLevel();
+        printer.print("This is only a test page", 4);
+        printer.getTonerLevel();
 
-        System.out.println(bankAccount.getAccountNum());
 
-        bankAccount.setAccountNum(654321);
+        // Player Class
+        // Player player = new Player();
+        //
+        // player.fullName = "Tim";
+        // player.health = 20;
+        // player.weapon = "Sword";
+        //
+        // int damage = 10;
+        // player.loseHealth(damage);
+        // System.out.println("Remaining health = " + player.healthRemaining());
+        //
+        // damage = 11;
+        // player.loseHealth(damage);
+        // System.out.println("Remaining health = " + player.healthRemaining());
 
-        System.out.println(bankAccount.getAccountNum());
+        // Enhanced Player Class
+        // EnhancedPlayer enhancedPlayer = new EnhancedPlayer("Neevor",300, "Sword");
+        //
+        // int health = enhancedPlayer.getHealth();
+        // System.out.println("health: " + health);
 
-        bankAccount.withdraw(10);
-        bankAccount.withdraw(100);
 
-        bankAccount.deposit(30);
-
-        bankAccount.status();
+        // BankAccount bankAccount = new BankAccount(
+        //         123456, 100, "Wojtek",
+        //         "wojtek@argentus.pl", "123-456-789"
+        // );
+        //
+        // BankAccount bankAccount1 = new BankAccount();
+        //
+        // bankAccount1.status();
+        //
+        // System.out.println(bankAccount.getAccountNum());
+        //
+        // bankAccount.setAccountNum(654321);
+        //
+        // System.out.println(bankAccount.getAccountNum());
+        //
+        // bankAccount.withdraw(10);
+        // bankAccount.withdraw(100);
+        //
+        // bankAccount.deposit(30);
+        //
+        // bankAccount.status();
 
     }
 
