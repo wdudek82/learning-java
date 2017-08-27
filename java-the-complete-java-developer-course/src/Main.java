@@ -10,6 +10,7 @@ public class Main {
         printer.print("This is only a test page", 4);
         printer.getTonerLevel();
 
+        System.out.println((int) Math.ceil((double) 5/2));
 
         // Player Class
         // Player player = new Player();

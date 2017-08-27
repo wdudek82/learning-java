@@ -39,7 +39,17 @@ public class Printer {
         return pagesPrinted;
     }
 
+    public int pagesToPrint(int copies) {
+        if (isDuplex) {
+            copies = (int) Math.ceil((double) copies / 2);
+        }
+        return copies;
+    }
+
     public void print(String content, int copies) {
+        // if in duplex mode, divide copies num by half
+        copies = pagesToPrint(copies);
+
         if (tonerLevel >= copies) {
             for (int i = 1; i <= copies; i++) {
                 System.out.printf("===== PRINTING %d/%d ===== " + content + "\n", i, copies);
